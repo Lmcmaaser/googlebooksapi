@@ -19,15 +19,12 @@ class App extends React.Component {
     })
   }
 
-  handleDoSearch = (props) => {
+  /*handleDoSearch = (props) => {
     //callback prop
     console.log ('handleDoSearch fired')
     const selected = Object.assign({}, this.state.selected);
-        selected[props] = newValue;
-        this.setState({
-          selected
-        });
-  }
+  }*/
+  
   render () {
     return (
       <div className="App" >

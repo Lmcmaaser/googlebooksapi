@@ -3,9 +3,14 @@ import React from 'react'
 export default function ShowResults(props) {
     return (
         <div>
-            <ul>
+            <ul> Book List
                  <li>
-                     {props.bookReturns}
+                    {this.state.empty || !this.state.books ? (
+                        <li>Empty List</li>
+                    ) : (
+                    <li>{this.state.books}</li>
+                     )}
+                     
                  </li>   
             </ul>
         </div>

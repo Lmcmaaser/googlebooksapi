@@ -9,15 +9,9 @@ import React from 'react'
 //pass query from form to App.js then back to fetch, then back to App. js, then to show results, then back to app
 class SearchForm extends React.Component {
 
-    constructor(props) {
-        super(props); 
-        this.state = {
-            query: '',
-        }
-    }
-
     state = {
-        empty: true
+        empty: true,
+        books: null
     };
     // handleChange updates the React state
     //Every time you type a new character, handleChange is called. It takes in the new value of the input and sets it in the state.
@@ -26,7 +20,6 @@ class SearchForm extends React.Component {
     }
 
     componentDidMount () {
-        event.preventDefault();
         const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
         const apiKey = 'AIzaSyDaubV3HndRiDb6DYAVllrcUkqwKmAC27Q';
         const url = baseUrl + this.query + 'intitle:keyes&key=' + apiKey;
@@ -34,13 +27,10 @@ class SearchForm extends React.Component {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                const bookResults = Object.keys(data)
-                    .map(key => data[key].item[0]);
                 this.setState({
-                    bookResults
+                    books: data.results[0]
                 });
             });
-        console.log(bookResults);
     }
 
     // https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&key=yourAPIKey
