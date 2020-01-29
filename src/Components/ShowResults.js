@@ -1,13 +1,13 @@
 import React from 'react'
-
-class ShowResults extends React.Component {
-    render () {
-        return (
-            <div>
-
-            </div>
-        )
-    }
+//pass in results
+export default function ShowResults(props) {
+    return (
+        <div>
+            <ul>
+                 <li>
+                     {props.bookReturns}
+                 </li>   
+            </ul>
+        </div>
+    )
 }
-
-export default ShowResults; 
