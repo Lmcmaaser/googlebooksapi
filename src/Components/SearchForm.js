@@ -8,18 +8,22 @@ import React from 'react'
 
 //pass query from form to App.js then back to fetch, then back to App. js, then to show results, then back to app
 class SearchForm extends React.Component {
-
-    state = {
-        empty: true,
-        books: null
-    };
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            empty: true,
+            books: null
+        };
+    }
+  
     // handleChange updates the React state
     //Every time you type a new character, handleChange is called. It takes in the new value of the input and sets it in the state.
     handleChange = (event) => {
         this.setState({query: event.target.value});
     }
 
-    componentDidMount () {
+    doSearch() {
         const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
         const apiKey = 'AIzaSyDaubV3HndRiDb6DYAVllrcUkqwKmAC27Q';
         const url = baseUrl + this.query + 'intitle:keyes&key=' + apiKey;
