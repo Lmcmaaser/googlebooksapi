@@ -17,15 +17,7 @@ class App extends React.Component {
     this.setState({
       books:data
     })
-  } //this is good, keep this
-  //updateApp State function
-    //pas something to doSearch
-
-  /*handleDoSearch = (props) => {
-    //callback prop
-    console.log ('handleDoSearch fired')
-    const selected = Object.assign({}, this.state.selected);
-  }*/
+  } 
   
   render () {
     return (
@@ -35,15 +27,10 @@ class App extends React.Component {
         </header>
         <main>
           <SearchForm 
-            //pass in a callback prop
-            //accept query argument
-              //comes from search form 
-            //doSearch={this.doSearch} //fetchs to google books
             handleChange={() => this.handleChange()}
           />
           <section>
             <ShowResults 
-
               books={this.props.books}
             />
           </section>

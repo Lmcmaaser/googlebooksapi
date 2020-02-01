@@ -30,7 +30,7 @@ class SearchForm extends React.Component {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                this.props.handleInput(data)({
+                this.handleInput(data)({
                     //books: data.results[0], put books in apps 
                     //pass in data as an argument
                     //in app.js, take in argument and set new state (this.setstate to be data.results)
