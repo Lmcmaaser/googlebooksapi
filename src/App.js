@@ -12,12 +12,14 @@ import ShowResults from './Components/ShowResults.js'
 
 class App extends React.Component {
   // Callback props are functions, give one callback prop for each of the actions needed to perform
-  handleChange = (event) => {
-    console.log('handleSubmit called', {event})
+  handleChange = (data) => {
+    console.log('handleChange called', {data})
     this.setState({
-      event
+      books:data
     })
-  }
+  } //this is good, keep this
+  //updateApp State function
+    //pas something to doSearch
 
   /*handleDoSearch = (props) => {
     //callback prop
@@ -36,13 +38,13 @@ class App extends React.Component {
             //pass in a callback prop
             //accept query argument
               //comes from search form 
-            doSearch={this.doSearch} //fetchs to google books
-            onChange={this.handleChange}
+            //doSearch={this.doSearch} //fetchs to google books
+            handleChange={() => this.handleChange()}
           />
           <section>
             <ShowResults 
-              
-              //bookReturns={this.props.bookReturns}
+
+              books={this.props.books}
             />
           </section>
         </main>

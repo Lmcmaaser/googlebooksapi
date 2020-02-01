@@ -10,29 +10,30 @@ import React from 'react'
 class SearchForm extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.state = {
-            empty: true,
-            books: null
+            query: ''
         };
     }
-  
-    // handleChange updates the React state
-    //Every time you type a new character, handleChange is called. It takes in the new value of the input and sets it in the state.
-    handleChange = (event) => {
-        this.setState({query: event.target.value});
+
+    //Every time you type a new character, handleInput is called. It takes in the new value of the input and sets it in the state.
+    handleInput = (e) => {
+        this.setState({query: e.target.value});
     }
 
-    doSearch() {
+    handleSubmit(e) {
+        e.preventDefault()
         const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
         const apiKey = 'AIzaSyDaubV3HndRiDb6DYAVllrcUkqwKmAC27Q';
-        const url = baseUrl + this.query + 'intitle:keyes&key=' + apiKey;
+        const url = baseUrl + this.state.query + 'intitle:keyes&key=' + apiKey;
         console.log(url)
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                this.setState({
-                    books: data.results[0]
+                this.props.handleInput(data)({
+                    //books: data.results[0], put books in apps 
+                    //pass in data as an argument
+                    //in app.js, take in argument and set new state (this.setstate to be data.results)
                 });
             });
     }
@@ -42,7 +43,7 @@ class SearchForm extends React.Component {
     render () {
         return (
             <div>
-                <form className="search__form" onSubmit={this.doSearch}>
+                <form className="search__form" onSubmit={e => this.handleSubmit(e)}>
                     <h2>Search for a Book</h2>
                     <fieldset>
                         <legend>Search</legend>
@@ -54,7 +55,7 @@ class SearchForm extends React.Component {
                                     id="query" 
                                     placeholder="Shakespeare"
                                     value={this.state.query} 
-                                    onChange={this.handleChange.bind(this)}
+                                    onChange={this.handleInput.bind(this)}
                                 />
                                 <button type="submit">Submit</button>
                             </div>
