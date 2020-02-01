@@ -15,7 +15,8 @@ class App extends React.Component {
   handleChange = (data) => {
     console.log('handleChange called', {data})
     this.setState({
-      books:data
+      title:data.results
+      
     })
   } 
   

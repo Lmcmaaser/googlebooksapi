@@ -12,30 +12,39 @@ class SearchForm extends React.Component {
         super(props);
         this.handleInput = this.handleInput.bind(this);
         this.state = {
-            query: ''
+            title: []
         };
     }
 
     //Every time you type a new character, handleInput is called. It takes in the new value of the input and sets it in the state.
-    handleInput = (e) => {
-        this.setState({query: e.target.value});
+    // handleInput = (e) => {
+    handleInput(title) {
+        // this.setState({query: e.target.value});
+        this.setState({title})
     }
+    //passing in json data
 
     handleSubmit(e) {
         e.preventDefault()
         const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
         const apiKey = 'AIzaSyDaubV3HndRiDb6DYAVllrcUkqwKmAC27Q';
-        const url = baseUrl + this.state.query + 'intitle:keyes&key=' + apiKey;
+        const url = baseUrl + this.state.title + '+intitle:keyes&key=' + apiKey;
         console.log(url)
+        //https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                this.handleInput(data)({
+                //this.handleInput(data)({
+                console.log(data)
+                this.setState({
+                    title: data
+                    //title: " "
                     //books: data.results[0], put books in apps 
                     //pass in data as an argument
                     //in app.js, take in argument and set new state (this.setstate to be data.results)
                 });
             });
+    
     }
 
     // https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&key=yourAPIKey
@@ -54,8 +63,10 @@ class SearchForm extends React.Component {
                                     name="query" 
                                     id="query" 
                                     placeholder="Shakespeare"
-                                    value={this.state.query} 
-                                    onChange={this.handleInput.bind(this)}
+                                    value={this.state.title} 
+                                    // onChange={ e => this.handleInput(e.target.value)}
+                                    // onChange={this.handleInput.bind(this)}
+                                    onChange={e => this.handleInput(e.target.value)}
                                 />
                                 <button type="submit">Submit</button>
                             </div>
