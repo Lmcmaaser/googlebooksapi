@@ -27,8 +27,7 @@ class App extends React.Component {
   }
   
   onSubmit(books) {
-    this.setState({
-      books:data
+    this.setState({books})
   }
   //onSubmit method that takes in the books data as a parameter and calls setState with that data
 
