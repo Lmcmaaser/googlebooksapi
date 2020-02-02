@@ -1,33 +1,65 @@
 import React from 'react'
-
-/*export default function ShowResults(books) {
-    return (
-        <div>
-            {this.props.books.map((books, i) =>)}
-        </div>
-    )
-}*/
 /* take data from fech and put into showResults components (.map) */
-
 class ShowResults extends React.Component {
     render() {
-        const results = this.props.books
-            .map((book, i) => 
-                <li 
-                    key={i}>{book.name}>
-                </li>
+      const options = this
+            .props
+            .books
+            .map(
+              (book, i) => <li value={book.name} key={i}>{book.name}</li>
             );
+      return (
+        <div>
+            <h2>Book List:</h2>
+            <ul>
+              {options}
+            </ul>
+        </div>
+      );      
+    }
+}
+  
+export default ShowResults;
+
+/*
+export default function ShowResults(props) {
+    return (
+        <div>
+            <h2>Book List:</h2>
+                    <ul>
+                        {this.props.books.map((book, i) => (
+                            <li key={book}>
+                                {i}
+                            </li>
+                        ))}
+                    </ul>
+        </div>
+    )
+}
+*/
+/*class ShowResults extends React.Component {
+    render() {
+        const results = ({books = []}) => (
+            return (
+                <div className="results">
+                    <h2>Book List:</h2>
+                    <ul>
+                        {this.props.books.map((book, items) => (
+                            <li key={book}>
+                                {items}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )
+        )
         return (
-            <div className="booklist">
-                <h2>Book List:</h2>
-                <ul>
-                    <li>
-                        {results}
-                    </li>
-                </ul>
+            <div>
+               <h2>Book List:</h2> 
+               
             </div>
         )
     }
 }
 
-export default ShowResults;
+export default ShowResults;*/
