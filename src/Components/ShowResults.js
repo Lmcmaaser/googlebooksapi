@@ -2,6 +2,7 @@ import React from 'react'
 /* take data from fech and put into showResults components (.map) */
 class ShowResults extends React.Component {
     render() {
+    console.log("ShowResults fired")
       const options = this
             .props
             .books

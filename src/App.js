@@ -38,10 +38,9 @@ class App extends React.Component {
             onSubmit={this.onSubmit}
           />
           <section>
-            <ShowResults 
-              books={this.props.books}
-              
-            />
+            <ShowResults
+             books={this.props.books}
+            /> 
           </section>
         </main>
       </div>
