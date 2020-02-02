@@ -12,7 +12,7 @@ class SearchForm extends React.Component {
         super(props);
         this.handleInput = this.handleInput.bind(this);
         this.state = {
-            title: []
+            title: ''
         };
     }
 
@@ -38,13 +38,7 @@ class SearchForm extends React.Component {
             .then(data => {
                 //this.handleInput(data)({
                 console.log(data) //displays json data in console
-                this.props.onSubmit(data);
-                //this.setState({
-                    //title: data
-                    //title: " "
-                    //books: data.results[0], put books in apps 
-                    //pass in data as an argument
-                    //in app.js, take in argument and set new state (this.setstate to be data.results)
+                this.props.onSubmit(data); //the json data gets passed to the onSubmit function in App.js
             });
     
     }

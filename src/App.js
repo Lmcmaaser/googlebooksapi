@@ -6,27 +6,22 @@ import ShowResults from './Components/ShowResults.js'
 //take data from fech and put into showResults components (.map)
 //results of fetch get added to app state
 //need handle submit function
-  //get value from user input and pass to callback prop from App.js doSearch function(query)
-    //do fetch
-    //this.setstate
+
 
 class App extends React.Component {
   // Callback props are functions, give one callback prop for each of the actions needed to perform
-  /*handleInput = (data) => {
-    console.log('handleChange called', {data})
-    this.setState({
-      books:data.results
-    })
-  } */
+ 
   handleInput(title) {
-    console.log("handleInput fired")
-    console.loge(title)
+    console.log("handleInput fired");
+    console.loge(title);
     const books = Object.assign({}, this.props.title);
     // this.setState({query: e.target.value});
     this.setState({books})
   }
-  
-  onSubmit(books) {
+
+  onSubmit = (books) => {
+    console.log("onSubmit fired");
+    console.log(books);
     this.setState({books})
   }
   //onSubmit method that takes in the books data as a parameter and calls setState with that data
@@ -45,6 +40,7 @@ class App extends React.Component {
           <section>
             <ShowResults 
               books={this.props.books}
+              
             />
           </section>
         </main>
