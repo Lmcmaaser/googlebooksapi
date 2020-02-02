@@ -26,6 +26,12 @@ class App extends React.Component {
     this.setState({books})
   }
   
+  onSubmit(books) {
+    this.setState({
+      books:data
+  }
+  //onSubmit method that takes in the books data as a parameter and calls setState with that data
+
   render () {
     return (
       <div className="App" >
@@ -35,6 +41,7 @@ class App extends React.Component {
         <main>
           <SearchForm 
             handleInput={() => this.handleInput()}
+            onSubmit={this.onSubmit}
           />
           <section>
             <ShowResults 

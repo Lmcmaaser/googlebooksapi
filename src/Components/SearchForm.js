@@ -26,16 +26,6 @@ class SearchForm extends React.Component {
     }
     //passing in json data
 
-    /*updateFeature = (feature, newValue) => {
-        console.log("updateFeature fired!");
-        console.log(feature, newValue);
-        const selected = Object.assign({}, this.props.selected);
-        selected[feature] = newValue;
-        this.setState({
-          selected
-        });
-    };*/
-
     handleSubmit(e) {
         e.preventDefault()
         const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
@@ -48,13 +38,13 @@ class SearchForm extends React.Component {
             .then(data => {
                 //this.handleInput(data)({
                 console.log(data) //displays json data in console
-                this.setState({
-                    title: data
+                this.props.onSubmit(data);
+                //this.setState({
+                    //title: data
                     //title: " "
                     //books: data.results[0], put books in apps 
                     //pass in data as an argument
                     //in app.js, take in argument and set new state (this.setstate to be data.results)
-                });
             });
     
     }
@@ -89,4 +79,4 @@ class SearchForm extends React.Component {
     }
 }
 
-export default SearchForm; 
+export default SearchForm;
