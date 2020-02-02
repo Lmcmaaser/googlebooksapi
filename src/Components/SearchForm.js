@@ -19,10 +19,22 @@ class SearchForm extends React.Component {
     //Every time you type a new character, handleInput is called. It takes in the new value of the input and sets it in the state.
     // handleInput = (e) => {
     handleInput(title) {
+        console.log("handleInput fired")
+        console.log(title) //correctly passes input
         // this.setState({query: e.target.value});
         this.setState({title})
     }
     //passing in json data
+
+    /*updateFeature = (feature, newValue) => {
+        console.log("updateFeature fired!");
+        console.log(feature, newValue);
+        const selected = Object.assign({}, this.props.selected);
+        selected[feature] = newValue;
+        this.setState({
+          selected
+        });
+    };*/
 
     handleSubmit(e) {
         e.preventDefault()
@@ -35,7 +47,7 @@ class SearchForm extends React.Component {
             .then(response => response.json())
             .then(data => {
                 //this.handleInput(data)({
-                console.log(data)
+                console.log(data) //displays json data in console
                 this.setState({
                     title: data
                     //title: " "
