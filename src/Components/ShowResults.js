@@ -3,7 +3,7 @@ import React from 'react'
 class ShowResults extends React.Component {
     render() {
     console.log("ShowResults fired")
-        const options = this.props.books.map((book, i) => 
+        const options = this.props.books.items.map((item, key) => 
             <li value={book.item} key={i}>
                 {book.item}
             </li>
