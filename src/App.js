@@ -15,7 +15,7 @@ class App extends React.Component {
     this.state = {
         books: []
     };
-}
+  }
 
   handleInput(title) {
     console.log("handleInput fired");
@@ -46,7 +46,7 @@ class App extends React.Component {
           />
           <section>
             <ShowResults
-              books={this.props.books}
+              books={this.state.books}
             /> 
           </section>
         </main>
