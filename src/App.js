@@ -28,7 +28,7 @@ class App extends React.Component {
   onSubmit = (books) => {
     console.log("onSubmit fired");
     console.log(books);
-    this.setState({books})
+    this.setState({books:books}) //putting it in a part of the state, deep copying it
   }
   //books is an object and has a propery called items that's an array
   //onSubmit method that takes in the books data as a parameter and calls setState with that data
