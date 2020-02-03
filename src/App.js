@@ -10,7 +10,13 @@ import ShowResults from './Components/ShowResults.js'
 
 class App extends React.Component {
   // Callback props are functions, give one callback prop for each of the actions needed to perform
- 
+  constructor(props) {
+    super(props);
+    this.state = {
+        books: []
+    };
+}
+
   handleInput(title) {
     console.log("handleInput fired");
     console.loge(title);
