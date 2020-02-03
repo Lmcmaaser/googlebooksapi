@@ -17,17 +17,9 @@ class App extends React.Component {
     };
   }
 
-  handleInput(title) {
-    console.log("handleInput fired");
-    console.loge(title);
-    const books = Object.assign({}, this.props.title);
-    // this.setState({query: e.target.value});
-    this.setState({books})
-  }
-
   onSubmit = (books) => {
     console.log("onSubmit fired");
-    console.log(books);
+    console.log("setting state", books);
     this.setState({books:books}) //putting it in a part of the state, deep copying it
   }
   //books is an object and has a propery called items that's an array
@@ -41,8 +33,8 @@ class App extends React.Component {
         </header>
         <main>
           <SearchForm 
-            handleInput={() => this.handleInput()}
-            onSubmit={this.onSubmit}
+            onSubmit={this.onSubmit} 
+            // passes onSubmit to SearchForm.js to be executed
           />
           <section>
             <ShowResults

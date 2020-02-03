@@ -3,10 +3,8 @@ import React from 'react'
 //can have a state
 //controlled input form
 //contents of form = state
-//get doSearch props
 //every state mutation will have an associated handler function
 
-//pass query from form to App.js then back to fetch, then back to App. js, then to show results, then back to app
 class SearchForm extends React.Component {
     constructor(props) {
         super(props);
@@ -16,39 +14,35 @@ class SearchForm extends React.Component {
         };
     }
 
-    //Every time you type a new character, handleInput is called. It takes in the new value of the input and sets it in the state.
-    // handleInput = (e) => {
+    //Every time you type a new character, handleInput is called. 
+    //It takes in the new value of the input and sets it in the state.
     handleInput(title) {
         console.log("handleInput fired")
         console.log(title) //correctly passes input
-        // this.setState({query: e.target.value});
         this.setState({title})
     }
-    //passing in json data
 
     handleSubmit(e) {
         e.preventDefault()
         const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
         const apiKey = 'AIzaSyDaubV3HndRiDb6DYAVllrcUkqwKmAC27Q';
-        const url = baseUrl + this.state.title + '+intitle:keyes&key=' + apiKey;
+        const url = baseUrl + this.state.title + '&key=' + apiKey;
         console.log(url)
-        //https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                //this.handleInput(data)({
                 console.log(data) //displays json data in console
-                this.props.onSubmit(data); //the json data gets passed to the onSubmit function in App.js
+                this.props.onSubmit(data.items); 
+                //the json data gets passed to the onSubmit function in App.js
+                //accessing parent function to execute
             });
-    
     }
 
-    // https://www.googleapis.com/books/v1/volumes?q=flowers+intitle:keyes&key=yourAPIKey
     
     render () {
         return (
             <div>
-                <form className="search__form" onSubmit={e => this.handleSubmit(e)}>
+                <form className="search__form" onSubmit={e => this.handleSubmit(e)}> 
                     <h2>Search for a Book</h2>
                     <fieldset>
                         <legend>Search</legend>
@@ -60,8 +54,7 @@ class SearchForm extends React.Component {
                                     id="query" 
                                     placeholder="Shakespeare"
                                     value={this.state.title} 
-                                    // onChange={ e => this.handleInput(e.target.value)}
-                                    // onChange={this.handleInput.bind(this)}
+                                    // handleInput references line 21
                                     onChange={e => this.handleInput(e.target.value)}
                                 />
                                 <button type="submit">Submit</button>
