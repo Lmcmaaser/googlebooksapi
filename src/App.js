@@ -24,6 +24,7 @@ class App extends React.Component {
     console.log(books);
     this.setState({books})
   }
+  //books is an object and has a propery called items that's an array
   //onSubmit method that takes in the books data as a parameter and calls setState with that data
 
   render () {
@@ -39,7 +40,7 @@ class App extends React.Component {
           />
           <section>
             <ShowResults
-             books={this.props.books}
+              books={this.props.books}
             /> 
           </section>
         </main>

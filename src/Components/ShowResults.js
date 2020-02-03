@@ -3,24 +3,24 @@ import React from 'react'
 class ShowResults extends React.Component {
     render() {
     console.log("ShowResults fired")
-      const options = this
-            .props
-            .books
-            .map(
-              (book, i) => <li value={book.name} key={i}>{book.name}</li>
+        const options = this.props.books.map((book, i) => 
+            <li value={book.item} key={i}>
+                {book.item}
+            </li>
             );
-      return (
-        <div>
-            <h2>Book List:</h2>
-            <ul>
-              {options}
-            </ul>
-        </div>
+        return (
+            <div>
+                <h2>Book List:</h2>
+                <ul>
+                    {options}
+                </ul>
+            </div>
       );      
     }
 }
   
 export default ShowResults;
+//results.map(data => <MyComponent aProp={data.something} />);
 
 /*
 export default function ShowResults(props) {
